@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /*
+            setTimeout() 이라는 builtin 함수가 있다.
+
+            setTimeout(콜백함수, 지연시간(ms단위))
+
+            어떤 작업을 일정시간 지연 이후에 하고 싶을 때 사용한다.
+        */
+
+        setTimeout(function(){
+            console.log("5 seconds over!")
+        }, 5000);
+        // setTimeout 함수 자체는 웹 로딩시 호출되고,
+        // 이 함수는 5초 이후에 호출된다.
+
+        //인자로 전달된 함수를 10초 이후에 호출해주는 함수
+        function wait(callback){
+            setTimeout(function(){
+                callback();
+            }, 10000);
+        };
+
+        wait(function(){
+            console.log("10 seconds over! unbeilevable");
+        });
+
+    </script>
+</body>
+</html>

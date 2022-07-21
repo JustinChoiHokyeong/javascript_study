@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function order(menu, callback){
+            const delay=Math.random()*5000+5000
+            setTimeout(function(){
+                a=20;
+                console.log(menu+" is released.");
+                callback(menu); // ()로 호출할 뿐만 아니라, 
+                // 밑에서 호출하는 함수에게 menu라는 데이터까지 item이라는 변수에 전달한다.
+                // 이게 있어서 아래 있는 order()들이 실행된다. 
+                // 밑의 order 함수를 실제로 호출하는(실행시키는) 역할
+                // 아래 오더들은 일단 생성만 될 뿐 호출을 하지 않으면, 실행되지 않는다.
+                // 검사-소스에 들어가서 진행 과정을 확인해보자.
+            },delay);
+            a=999;
+            
+            console.log(a)   
+        }
+        
+
+        // 얘네는 웹 로딩 시점에서 생성만 될 뿐(나열만 되어 있을 뿐), 호출이 있어야 실행된다.
+        order("Coffee", function(item){
+            console.log("Bon appetit! "+item);
+        })
+        order("Sandwich", function(item){
+            console.log("Bon appetit! "+item);
+        })
+
+        function test(a){
+            console.log(a);
+            //a(); 이거는 말이 안된다. 문자열이나 숫자는 콜이 안되기 때문.
+            // test(function(){}); 하면 주어진 함수는 콜이 된다.
+            // 따라서 order(menu, callback){} 에서 callback은 함수를 줬기 때문에,
+            // callback()은 된다.
+        }
+        
+        // 주문한 순서대로 출력되지 않음, 할때마다 랜덤으로 달라진다
+
+        // order( ,function(){})으로 입력한 함수는 맨 위의 function에 있는 callback으로 가서 대응되고
+        // 그리고 그 함수 안에 있는 callback(menu)에 가서 실행한다.
+
+        // 커피가 주문된 후에 샌드위치를 작업하고 싶다면 안으로 넣으면 된다.
+        // 언제 끝날지 모르는 작업을 순서대로 하고 싶다면,
+        // 안으로 집어넣는 구조가 된다. 자바스크립트의 특징임 
+        // order("커피", function(item){
+        //     order("sandwich", function(item){
+        //         order("ice cream", function(item){});
+        //     });
+        // });
+        // 계속 끝없이 내려가는 구조를 '콜백 지옥'이라고 한다, 
+        // 순서는 정해졌지만 각 실행이 언제 끝날지 모르기 때문에
+
+        // 비동기 동작 : 코드 순서대로 먼저 완료되는 것은 아니다. 
+        // 동시에 각자 시작하고 진행시간이 다르기 때문에, 
+        // 자바스크립트엔 동기와 비동기 작업 둘 다 있다
+        
+
+        // // 메뉴를 주문하는 함수라고 가정하자
+        // function order(menu, callback){
+        //     // 메뉴를 준비하는데 걸리는 시간이 랜덤하다고 가정하자
+        //     const delay=Math.random()*5000+5000 // 5000~10000 사이의 랜덤한 숫자 출력
+        //     setTimeout(function(){
+        //         console.log(menu+" is released.");
+        //         callback(menu);
+        //     }, delay);
+        // };
+
+        // // (string type, function type)
+        // // 커피를 주문하고 커피가 준비되면 호출되는 함수 전달하기
+        // order("커피", function(item){
+        //     // 커피가 준비되었을 때 하고 싶은 작업을 여기서 하면 됨
+        //     console.log("Enjoy your "+item);
+        //     // 샌드위치를 주문하고 샌드위치가 준비되면 호출되는 함수 전달하기
+        //     order("sandwich",function(item){
+        //         //샌드위치가 준비되었을 때 하고 싶은 작업을 여기서 하면 됨
+        //         console.log("Enjoy your "+item+", help yourself.")
+        //         //비동기 작업 : 
+        //         order("ice cream", function(item){
+        //             //아이스크림이 준비되었을 때 하고 싶은 작업을 여기서 하면 된다.
+        //             console.log(item+" is good dessert.")
+        //         });
+        //     });
+        // });
+
+        
+
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // function func(callback) {
+        // 	callback();
+        // }
+        // function callback() {
+        //     console.log("callback이다");
+        // }
+
+        // func(callback);
+
+        // function introduce (lastName, firstName, callback) { 
+	    //     var fullName = lastName + firstName; 
+        //     callback(fullName); 
+        // } 
+
+        // introduce("홍", "길동", function(name) { 
+        //     console.log(name); 
+        //     });
+
+        /*  
+            함수는 원래 다른 함수의 매개변수로도 쓸 수 있고, 그래서 다른 함수에 의해 호출될 수 있다.
+            이때 다른 함수의 매개변수로 쓰이는 함수를 콜백함수라고 한다. 따라서 미리 함수를 등록만 해놓고
+            어떤 이벤트가 발생했거나, 특정한 시점에 도달했을 때, 자동으로 호출되게 해서 사용한다.
+
+            비동기 방식으로 작성된 함수를 동기 처리하거나, 가독성이 좋게 만들기 위해, 만든 코드를 
+            재사용하기 위해 사용한다.
+        */
+
+        // function vendingMachine(temperature, name, callback){
+        //     let drink = temperature+' '+name;
+        //     callback(drink)
+        // }
+
+        // vendingMachine('뜨거운','매실차', function(a){
+        //     console.log(a);
+        // })
+
+        // vendingMachine('시원한','딸기라떼', function(a){
+        //     console.log(a);
+        // })
+
+        function findUserAndCallBack(id, cb) {
+            const user = {
+                id: id,
+                name: "User" + id,
+                email: id + "@test.com",
+        };
+        cb(user);
+        }
+        findUserAndCallBack(1, function (user) {
+        console.log("user:", user);
+        });
+
+        
+
+        
+    </script>
+</body>
+</html>

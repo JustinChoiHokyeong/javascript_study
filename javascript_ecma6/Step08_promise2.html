@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        function order(menu, callback){
+            const delay=Math.random()*5000+5000
+            setTimeout(function(){
+                console.log(menu+" is released.");
+                callback(menu); 
+            },delay);
+        }
+
+        // Promise 객체를 생성하면서 함수 전달
+        new Promise(function(resolve){
+            // 전달된 함수는 즉시 호출된다.
+            // 성공했을 때 받는 함수라는 의미
+            // resolve -> function type 으로 전달되는데 해당 함수를 호출하면
+            order("Coffee", resolve);
+            // resolve가 callback 매개변수 으로 갔다가, callback(menu) 가서 호출 되고, 
+            // 해당 정보가 아래 then(function(item)으로 전달된다
+        }).then(function(item){
+            // resolve 매개변수를 쓰면 .then이라는 객체로 받게 된다.
+            // 커피가 완료되었을 때 하고 싶은 동작
+            console.log(item+" Enjoy!");
+            // 샌드위치를 주문하는 Promise 객체를 만들어서 리턴해준다.
+            return new Promise(function(resolve){
+                order("sandwich", resolve);
+            });
+        }).then(function(item){
+            // 샌드위치가 준비되었을 때 하고 싶은 동작
+            console.log(item+" Enjoy!");
+            // 이렇게 resolve - then 구조로 쭉 이어서 적을 수 있다.
+            return new Promise(function(resolve){
+                order("Ice cream", resolve);
+            });
+        }).then(function(item){
+            console.log(item+" Enjoy!");
+        });
+
+        // [promise] .then()이 나오면 앞에는 무조건 promise 타입이다. 
+
+        
+    </script>
+</body>
+</html>

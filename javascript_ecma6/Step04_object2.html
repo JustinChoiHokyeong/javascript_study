@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let num=1;
+        let name='KIM';
+        let isMan=true;
+
+        let mem={num:num, name:name, isMan:isMan, sing:function(){}};
+        // 
+
+        let mem2={num, name, isMan, sing(){}};
+        // 오브젝트 형태에서 데이터가 대응된 변수명만 적으면, 알아서
+        // {num: 1, name: 'KIM', isMan: true} 이런 구조로 만들어줌
+        // 함수도 이런 형태로 입력시킬 수 있다
+
+        //object의 key값으로 사용할 문자열을 변수에 대입하고
+        let a="num";
+        let b="name";
+        let c="isMan";
+
+        // object의 key값을 변수 안에 있는 값으로 결정할 수 있다.
+        let mem3={[a]:2, [b]:"SUN", [c]:false};
+        // 오브젝트 키 값에 변수로 되어 있다면, 변수를 이용해서
+        // 방의 이름을 바꿀 수 있다.
+
+
+    </script>
+</body>
+</html>

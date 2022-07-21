@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- ecma : 2017년 정도에 추가되었고, 범용적으로 사용하는 자바스크립트 문법 -->
+    <script>
+        // 예전에 변수를 선언하는 방식
+        var num=10;
+        // ecma6부터 변수를 선언하는 방식
+        let num2=10
+
+        if(true){
+            var myName='KIM';
+            let yourName='Monkey';
+        }
+        // var은 지역 안에서 선언해도 빠져나가서 전역 변수가 된다. 즉 전역변수를 선언하는 기능
+        // let은 지역과 전역을 확실하게 구분함
+
+        //값을 변경하지 못하도록 상수(constant)화 시키기
+        const pi=3.14159
+        // 새로운 값을 대응하려고 하면, 에러 뜸, 바꿀 수가 없다
+        // 바꿔야 할 것 같다면 let / 바뀌지 말아야 한다면 const 로 선언하면 된다.
+
+    </script>
+</body>
+</html>

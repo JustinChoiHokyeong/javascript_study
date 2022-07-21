@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- json : java script object notation -->
+    <h1>Friends List</h1>
+    <button id="moreBtn">김버튼</button>
+    <ul id="friendsList">
+        <li>dog</li>
+        <li>cat</li>
+    </ul>
+    <script>
+        document.querySelector("#moreBtn").addEventListener("click", function(){
+        //서버에 friends.json 문서를 요청해서 받아온다.
+        // fetch -> promise객체를 리턴해주는 함수이다, 왜냐하면
+        // 웹서버에 요청한 데이터가 넘어오는데 얼마나 걸릴지 확실하지 않아서, 비동기로 처리하기 때문에
+            fetch("friends.json") // 버튼을 클릭하면 fetch함수가 호출되고,
+            // http://127.0.0.1:5500/javascript_ecma6/friends.json 이걸 요청한 것과 마찬가지다
+            .then(function(response){
+            //console.log(response);
+                return response.json(); //제이슨으로 쓰면, 자동으로 파스까지 해서 넣어준다
+        }).then(function(data){
+            //data는 친구 목록이 들어 있는 array 이다.
+            console.log(data);
+            for(let item of data){
+                let li=document.createElement("li");
+                li.innerText=item;
+                document.querySelector("#friendsList").append(li);
+            }
+        });
+        });
+
+        // document. 은 페이지 로딩 시점에
+        // fetch는 클릭이란 이벤트가 일어났을 때
+        // .then은 fetch가 실행되었을 때
+        // 실행된다.
+
+        // 매개변수는 함수를 호출할 때마다 새로 만들어지기 때문에, 
+        // 모든 만들어진 매개변수는 서로 독립적인 공간이다.
+        // 따라서 시간 차를 두고 호출이 되도, 변경이 되는 것이 아니라, 
+        // 완전 새로운 공간에 다른 값이 대응된 것이다. 
+        // 일단 10으로 값을 설정하고 5초 뒤에 사용하려고 대기하고 있는데,
+        // 그 다음 호출이 즉시 999로 값을 바꿔버렸기 때문에, 
+        // 5초가 지난 후에 사용하려고 보니까 999가 되어 있는 것이다.
+        // 따라서 출력되는 결과는 999가 된다. 두 호출 다 각자 실행했지만, 더 최근에 대응한 값이
+        // 해당 변수를 검색하면 출력되게 된다.
+        // 비유를 들면, 내가 5초 뒤에 맥주를 마시려고 했는데, 친구가 지금 바로 맥주를 마셨다.
+        // 그러니 5초 뒤에 내가 쓰려고 보았을 땐, 맥주는 비어있는 상태로 적용되는 것이다.
+
+        // closure : 해당 변수는 자기만의 고유한 영역이라는 뜻 
+
+        // 제이슨 : 자바스크립트에서 쓰는 데이터 형식
+        // {'a':'b', 'd':'e'}
+
+        // 이러한 형식에 따라 문서를 작성하면, 작업하기 편하다. 
+
+        let str1=`
+            {"num":1, "name":"KIM", "isMan":true}
+        `;
+        // json 형식을 따르는 스트링
+
+        let obj1={num:1, name:"KIM", isMan:true};
+        // 오브젝트
+
+        // JSON.parse(str1) 하면
+        // json 형식을 따르는 스트링을 JSON.parse 함수에 전달하면,
+        // {"num":1, "name":"KIM", "isMan":true} 을 반환해준다. 
+        //(json 형식의 데이터를 자바스크립트의 오브젝트나 어레이 형태로 변환해줌 )
+        let obj2=JSON.parse(str1);
+
+        let str2=`
+            ["KIM", "HAPPY", "MONEY"]
+        `;
+        let arr2=JSON.parse(str2);
+
+    </script>
+</body>
+</html>
+
+<!-- 
+    json type
+    {"name" : "choiHokyeong" , "liveLoc" : "seoul" , "likeFood" : ["chicken","sushi","cake"]}
+
+    xml type
+    <info>
+        <name>choiHokyeong</name>
+        <liveLoc>seoul</liveLoc>
+        <likeFood>
+            <food>sushi</food>
+            <food>chichen</food>
+            <food>cake</food>
+        </likeFood>    
+    </info>
+
+    <person name="KIM" addr="NRJ"/> 의 형태도 가능하다.
+    <like-food>
+        <item name="fork belly"/>
+        <item name="sirloin"/>
+    </like-food>
+    
+
+
+ -->

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="inputMsg" placeholder="write string...">
+    <script>
+        let mem={num:1, name:'KIM', addr:'NRJ'};
+        let c={num2:2, name2:'PARK', addr:'NRJ'};
+
+
+        let {num,name}=mem; // 객체분해할당
+        /*
+            let num=mem.nem
+            let name=mem.name
+            을 줄여서 한줄로 쓴 것이다.
+        */ 
+
+        let useMem=function({num,name}){
+            console.log(num+" | "+name);
+
+        };
+
+        useMem({num:2, name:"HAE"});
+        // 이 값이 위의 함수에 대응이 된다.
+
+        useMem(mem);
+        // mem이라는 오브젝트가 분해되서 함수로 대응이 된다.
+
+
+        document.querySelector("#inputMsg").addEventListener("keydown", function(e){
+            console.log(e);
+            //keydown event가 발생하면, 키 이벤트 오브젝트가 e 변수로 할당된다.
+        });
+
+        document.querySelector("#inputMsg").addEventListener("keydown", function({keyCode}){
+            console.log(keyCode);
+            // e자리에 할당된 데이터는 오브젝트이며, {keyCode:65, ...} 의 형태로 존재하기 때문에
+            // 이런 방식으로도 사용이 가능하다.
+        });
+
+    </script>
+</body>
+</html>

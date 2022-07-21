@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //backtick 기호를 이용해서 문자열을 만들 수 있다.
+        let info=`Have a nice day!`;
+        //backtick은 여러 줄의 문자열을 편하게 작성할 수 있다.
+        let html=`
+            <ul>
+                <li>하나</li>
+                <li>두울</li>
+            </ul>
+        `;
+        // backtick은 변수 안에 들어 있는 숫자나 문자열을 연결할 때도 편하다.
+        // ${ } -> 변수, 객체, 배열을 참조하거나 함수를 호출할 수 있음, 
+        // 연산자도 가능하며, backtick 안에서 사용 가능, 따옴표에선 인식 안됨
+        
+        let name1='KIM';
+        let name2='HAPPY';
+        let html2=`
+            <ul>
+                <li>${name1}</li>
+                <li>${name2}</li>
+            </ul>
+        `
+        let html3=`My name is ${name1}.`
+        
+    </script>
+</body>
+</html>
