@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <select id="mySelect">
+        <option value="">선택</option>
+        <option value="0">가위</option>
+        <option value="1">바위</option>
+        <option value="2">보</option>
+        <!-- 폼 요소들에 입력된 값은 value로 읽어온다(innerText 아님) 
+            근데 value값이 없으면 innerText를 대신 읽어온다-->
+
+    </select>
+    <p id="my"></p>
+    <script>
+        //셀렉트 요소에서 바꾸면, 체인지 라는 이벤트가 발생해서 그 값을 읽어옴
+        document.querySelector("#mySelect").addEventListener("change", function(){
+            let value=document.querySelector("#mySelect").value;
+            document.querySelector("#my").innerText=value;
+        })
+    </script>
+    
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>반복문 테스트1</h1>
+    <button onclick="clicked()">김버튼</button>
+    <button id="myBtn">박버튼</button>
+    <script>
+
+        document.querySelector("#myBtn").addEventListener("click", function(){
+            console.log("callback 함수가 호출됨")
+        });
+        // string type으로 이벤트 명 입력
+        // function type으로 콜백 함수
+        // (입력해두면 호출하지 않아도 적절한 시점에 알아서 실행되는 함수) 입력
+        // thread(쓰레드) : 순서대로 실행하는 작업의 흐름, 위에서 아래로
+
+        function clicked(){
+            console.log("clicked() 호출됨");
+        };
+        
+
+    /*
+        1. for( ; ; ){ }
+        for문을 만나면 우선 1번째 칸이 실행이 되고
+        let i=0 은 for 문 안에서만 사용할 수 있는 local variable을 만들고 초기값 0 대입해줌
+        for문이 종료되면 i는 사라진다. for문 안에서만 쓸 수 있다.
+        for문에 실행순서가 왔을 때 1번째 칸은 최초 한번만 실행된다. 그 다음부터는 2,3번째만 왔다갔다 함
+        전역변수만 콘솔에서 참조할 수 있다. 지역 변수는 자신의 그룹 안에서만 사용가능함으로 
+        콘솔에서는 검색해도 나오지 않는다.
+
+        2. 두번째 칸인 i<5이 조건이 false가 될때까지 for 문의 { } 블럭이 반복 수행된다.
+        i값이 2번째 칸에 와서 보고 true면, 명령을 수행하고, 3번째 칸으로 간다. 여기서 1을 더해주고
+        그리고 i값이 2번째 칸으로 와서 false가 뜨면 그 때는 명령을 무시하고 빠져나오는 것이다.
+
+        3. i++ 에서 ++는 i 안에 있는 숫자를 1 증가시키는 증감 연산자이다.
+
+        실행의 흐름을 인지해야 한다.
+
+    */
+        for(let i=0; i<5; i++){
+            console.log(i);
+        }
+        console.log("javascript가 로딩 되었습니다.")
+
+
+
+    </script>
+</body>
+</html>

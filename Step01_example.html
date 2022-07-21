@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 
+    
+    p{p입니다}*5
+    <p>p 입니다</p>
+    <p>p 입니다</p>
+    <p>p 입니다</p>
+    <p>p 입니다</p>
+    <p>p 입니다</p> 
+
+    p{p$}*5
+    <p>p1</p>
+    <p>p2</p>
+    <p>p3</p>
+    <p>p4</p>
+    <p>p5</p>
+-->
+
+<p>p1</p>
+<p id="one" class="my-class">p2</p>
+<p id="two" class="my-class">p3</p>
+<p class="my-class">p4</p>
+<p id="four">p5</p>
+
+<!-- 
+    문서 객체(오브젝트)는 오브젝트와 유사하다
+    웹 로딩 시 heap 영역에 html, head, meta, body, p 등의 갯수에 맞춰서 저장시킨다
+    개발자가 필요하다면 문서 오브젝트에 접근할 수 있게 해줌
+    자바스크립트를 이용해서 innertext를 바꿀수도 제거할 수도 있다, <p>innertext</p>
+    그렇기 위해서는 해당 요소가 몇번째 사물함에 들었는지 알아야 함(사물함 키 참조값를 알아야 함)
+
+    document는 빌트인 오브젝트라서 . 사용 가능
+    document.querySelectorAll("p") 해서 함수 호출하면
+    NodeList(5) [p, p, p, p, p] (어레이)을 반환함, 즉 '모든 p요소의 참조값'을 순서대로 갖고왔다(어레이 방식으로)
+    반환할 때 함수 참조값이 사라지게 되는데, 버리지 않고 사용하고 싶다면,
+    let ps=document.querySelectorAll("p"); 처럼 어떤 변수에 담는다
+    그러면 ps[0] 처럼 사용가능하다
+    document.querySelectorAll("#one")하면 id=one으로 가진 모든 요소를 순서대로 갖고온다(어레이 타입으로)
+    
+    어레이라서 [] 사용해서 인덱스값 사용할 수 있다.
+    document.querySelectorAll("p")[0] 은 .이 찍어진다 즉 오브젝트다
+    document.querySelectorAll("p")[0].innerText="김구라"; 처럼 
+    자바스크립트를 이용해서 원하는 시점에 원하는 조작을 할 수 있다. 
+    이를 위해선 그 문서의 참조값을 얻어오는 것이 중요하다.
+    참조값을 통해서 조작이 필요한 위치를 찾는다
+
+    innerText는 오브젝트 안에 있는 여러개의 키 값 중 하나, {innerText : "p1"} 처럼
+
+    document.querySelector("p")는 p 요소(조건이 해당되는) 중에서 제일 첫번째 1개를 반환해줌
+    id를 설정을 해두면,
+    document.querySelector("#one") 를 이용해서 빠르게 찾을 수 있다.
+    id는 유일하기 때문에 구분할 때 사용, class는 묶을 때 사용
+ -->
+<button onclick="change()">바꾸기</button>
+<button onclick="change2()">바꾸기2</button>
+<!-- 큰 따옴표 안에도 자바 스크립트 영역 
+    클릭 시에만 실행된다 -->
+
+<script> // 페이지 로딩 시 바로 실행
+
+    document.querySelectorAll("p")[0].innerText="김구라"
+    /*
+        바꾸기 버튼을 누르면 id가 one인 요소의 innerText를
+        "해골"로 바뀌도록 프로그래밍    
+    */
+   let change=function(){
+    document.querySelector("#one").innerText="해골"
+   };
+
+   function change2(){
+    document.querySelector("#two").innerText="진구"
+   };
+
+</script>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step01_dataType.html</title>
+    <style>
+        /* 여기는 css 영역 */
+        h1{
+            color: rebeccapurple;
+        }
+    </style>
+    <script>
+        // 여기는 javascript 영역, 페이지 로딩 시점에 실행
+        // 페이지 이동하기 전까지(한 페이지 내에서), 자바 스크립트를 해석해서 기억하고 있다.
+        console.log("start")
+    </script>
+</head>
+<body>
+    <h1>javascript Data Type</h1>
+    <script>
+        // 페이지 로딩 시점에 실행, 시작하자마자 만들어져 있다.
+        // number type의 데이터, value = 10
+        let num1 = 10; // type = number, value = 10
+        let num2 = 20;
+        let num3 = "개";
+        let num4 = 20;
+        // num2 != num4
+        
+        //  string type
+        let str1 = 'abcd1234';
+        let str2 = "김구라";
+        let str3 = `하나`;
+        // back tick을 이용해서 문자 데이터를 만들 수도 있다.
+        // ` : back tick(숫자 1 키보드 옆에 있음), 백틱은 여러 줄의 문자열을 편리하게 작성할 수 있다.
+        let str4 = `
+        하나
+        두울
+        세엣...`
+        
+        // 연산을 할 때 값이 들어 있는 변수명으로 연산을 할 수도 있다.
+        let result = num1 + num2 ;
+        let result2 = num1 + 100;
+        let result3 = num2*10;
+        let result4 = num1 + num2 + num3;
+        
+        // 변수 : 값을 저장할 수 있는 이름 지어진 기억 공간
+        // 값을 필요한 시점에서 바꿀 수 있다.
+        // 한번 선언할 변수는 다시 선언할 수 없다. 똑같은 변수를 반복 선언할 수는 없다.
+        // 우측에 있는 값을 좌측으로 대입시킨다
+
+
+        //  global 영역(전역) : 
+        // global 영역에서 만든 변수 : 전역변수, 어디에서나 사용할 수 있다
+        // 전역변수(파일 전체에서 사용 가능) & 매개변수(해당 그룹 안에서만 사용 가능)
+        
+
+
+    </script>
+</body>
+</html>
+
+<!-- Console
+    프로그래밍은 어떤 정보(data)를 다루는 것이다 
+
+    검사 - console 부분은 javascript 영역이며, 특정 시점에서 실행하는 공간
+    숫자와 연산 가능, 문자는 '',""로 감싸면 가능
+
+    변수, variable, 
+    let num = 10;
+    let num2 = 20;
+
+    변수를 만들땐 미리 약속된 예약어 let을 사용한다
+    변수를 선언할 때 처음엔 반드시 let을 붙여줘야 한다
+    let 변수명 = 입력할 값;
+    이러면 우측값이 좌측값에 들어간다(대입된다.)
+    한줄 끝에는 ;를 작성한다.
+    = 은 같다는 뜻이 아니라, 우측값을 좌측에 대입하라는 뜻이다.
+    == 은 같냐고 물어보는 것, true/false로 나옴
+
+    연산을 한 그 위치는 결과 값으로 바뀐다(대체된다)
+
+    undefined : 최종적으로 그 자리에는 아무것도 남아있지 않다는 뜻
+
+-->

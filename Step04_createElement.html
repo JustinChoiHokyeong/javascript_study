@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step04_createElement.html</title>
+    <style>
+        /* id 가 list 인 요소의 자식 중에서 마우가 올려진 li 요소를 선택 */
+        #list > li:hover{
+            background-color: yellow;
+            cursor: pointer;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="inputName" placeholder="이름 입력...">
+    <button id="addBtn">추가</button>
+    <h3>친구 목록 입니다.</h3>
+    <ul id="list">
+        <li>김구라</li>
+        <li>해골</li>
+        <li>원숭이</li>
+    </ul>
+    <script>
+
+        document.querySelector("#addBtn").addEventListener("click", function(){
+            add();
+        });
+
+        document.querySelector("#inputName").addEventListener("keydown", function(e){
+            //만일 엔터키를 눌렀다면
+            if(e.keyCode==13){
+                add();
+            }
+        });
+
+        function add(){
+            //1. 입력한 이름을 읽어온다.
+            let name=document.querySelector("#inputName").value;
+            //2. li 요소를 만들어서 입력한 이름을 innerText 에 넣어준다.
+            // createElement : 문자열로 만들 요소명을 전달한다
+            // 그러면 사물함(heap) 어디엔가 li 요소가 만들어짐, 그리고 사물함 키가 변수 li에 대응됨
+            // 만들었다고 바로 보이지는 않음
+            let li=document.createElement("li");
+            li.innerText=name;
+            // 인풋에 입력했던 값 li 요소의 innerText에 넣기
+            //3. 만든 li 요소를 ul 의 자식요소로 추가하기 
+            // id가 list인 ul에 자식요소로 어펜드했다.
+            document.querySelector("#list").append(li);
+            //4. 입력창 지우기
+            document.querySelector("#inputName").value="";
+            //5. 새로만든 li 요소에 click 이벤트 리스너 등록 
+            // 이 부분이 있어야 새로 만든 li에도 클릭 이벤트를 할 수 있음
+            li.addEventListener("click", function(){
+                let isDelete=confirm(this.innerText+" 를(을) 삭제 하시겠습니까?");
+                if(isDelete){
+                    this.remove();
+                }      
+            });
+        }
+
+        // 페이지 로딩 시점에 이미 만들어져 있는 li 의 참조값을 배열에 담아오기
+        let lis=document.querySelectorAll("#list > li");
+        // id list인 요소의 자식 요소인 li를 참조하겠다는 의미
+        // 반복문 돌면서 
+        for(let i=0; i<lis.length; i++){
+            //순서대로 이벤트 리스너 함수를 등록한다. 
+            lis[i].addEventListener("click", function(){
+                // this : click 이벤트가 일어난 바로 그 요소 ,여기서는 lis[i] 를 의미
+                // this가 가르키는 대상은 이벤트가 일어날 때마다 달라진다.
+                //lis[i].remove();
+                let isDelete=confirm(this.innerText+" 를(을) 삭제 하시겠습니까?");
+                // 
+                if(isDelete){
+                    this.remove();
+                }         
+            });
+
+            // 배열에는 애드이벤트리스너 함수가 없기 때문에, 배열의 인덱스 별로 참조한 뒤
+            // 각각 애드이벤트리스너 함수를 호출시켜줘야 한다
+            // 그리고 여기서 반복 동작이 필요해서 for문을 사용함
+
+            // 더보기, 동적 - 크리에이트엘리먼트
+        }
+
+    </script>
+</body>
+</html>

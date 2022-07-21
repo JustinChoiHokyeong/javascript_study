@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>javascript data type</h1>
+    <script>
+        /*
+            함수를 호출하는 목적
+            1. 어떤 동작을 하기 위해서
+            2. 어떤 값을 받아오기 위해
+            (number, string, boolean, object, array, function 타입의 결과값을 얻기 위해)
+            undefined : 정의되지 않은 타입의 값
+        */
+
+        console.log("javascript가 로딩 중입니다.")
+        // console은 빌트-인 오브젝트이다. 
+        // 그리고 오브젝트에서 log라는 키를 가지고 안에 있는 내용을 참조하려는 것
+
+        // 원숭이를 냉장고에 밀어 넣는 함수
+        let pushMonkey = function(){
+            console.log("냉장고 문을 열어요");
+            console.log("원숭이를 넣어요");
+            console.log("냉장고 문을 닫아요");
+        }
+        /*let a=pushMonkey; 하면 오른쪽부터 수행하고 푸쉬멍키가 언디파인드로 반환된다
+        그리고 에이에는 언디파인드가 대입되기 때문에 결국 남는 건 아무것도 없게 된다.(undefined)*/
+
+        let getFortune=function(){
+            // 어떤 복잡한 과정을 통해서 오늘의 운세를 얻어왔다고 가정하자
+            let fortune="동쪽으로 가면 귀인을 만나요";
+            // return이라는 예약어를 이용해서  string type 데이터를
+            // 함수를 호출한 그 위치로 되돌려 준다.
+            return fortune;
+            // 따라서 함수를 호출하면, 그 위치엔 스트링 결과값으로 반환된다.
+            // fortune은 매개변수로 함수 그룹 안에서만 사용가능
+        }
+
+        //원숭이를 냉장고에 넣기
+        pushMonkey();
+        // return이 없기 때문에 아무것도 반환하지 않는 undefined가 된다
+
+        //오늘의 운세를 받아와서 fortuneToday라는 변수에 담기
+        let fortuneToday=getFortune();
+        // 마찬가지로 이 변수를 참조하면 함수 내용을 실행하고 돌아올 때, 
+        // return을 만나서 스트링을 결과값으로 가지고 온다. 그래서 스트링이 반환된다.
+
+        getFortune(); // 스트링 결과값 반환
+        fortuneToday; // 새로운 변수에 함수를 대응시켰기 때문에
+        // 변수로 쓸 때는 소괄호 빼고 사용, 소괄호는 함수 타입만 사용하는 것이다
+
+        console.log("javascript가 로딩을 종료합니다.")
+
+    </script>
+</body>
+</html>

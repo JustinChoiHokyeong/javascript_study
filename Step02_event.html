@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <button onclick="clicked()">벤자민 버튼</button>
+    <!-- 큰따옴표 안은 자바스크립트이며 이벤트가 발생할 때마다 실행된다. -->
+    <button id="myBtn">김버튼</button>
+    <p id="console"></p>
+    
+    <script>
+        // 실행시키려는 함수는 글로벌 영역에 있어야 한다, 로컬 함수는 실행이 안됨
+        // 이벤트 처리를 ="" 속성을 사용해서 처리하면 글로벌 변수(함수)가 필요하다.
+
+        // 글로벌 변수(함수)가 많으면 바람직하지 않다.
+        // 글로벌 변수,함수는 클라이언트가 접근하고 수정할 수도 있다.(본인 웹브라우저 내에서)
+        // 글로벌 변수,함수는 여러 명에서 작성하면 변수명이 겹칠 수도 있다.
+        let clicked=function(){
+            document.querySelector("#console").innerText="감히 버튼을 눌렀네요?"
+        };
+
+        document.querySelector("#myBtn").addEventListener("click", function(){
+            document.querySelector("#console").innerText="또 눌렀어요?"
+    // addEventListener(string type으로 이벤트 타입 전달, function type으로 함수 입력)
+    // 두번째 변수값처럼 전달만 해두면 나중에 알아서 호출(콜)되는 것을 콜백함수라고 부른다
+    // 이 요소의 이벤트가 발생할 때마다, 알아서 미리 전달된 함수가 콜된다. 이것이 콜백함수
+        });
+        //addEventListener은 함수이며, 두 가지 값을 입력받는다
+        // event name(string type) 과 callback function(function type)
+        // 콜백 함수 : 나중에 자동으로 호출되는 함수
+        // 이벤트 name e.g. click, mouseover, mouseout, focus, blur, change ...
+        // 이벤트 이름은 이미 정해져있다
+        // 자바스크립트에서는 함수를 호출하면서 함수 자체를 호출할 때도 있다. 함수를 갖고 있는 함수
+        // null: 아무것도 없는 빈 상태
+
+    </script>
+<!--
+    자바스크립트가 실행되는 시점에서 버튼들이 아래에 있으면
+    아직 버튼이 안 만들어졌기 때문에, 버튼 관련된 요소들이 null상태라서 읽을 수가 없다 -->
+    <!-- <button onclick="clicked()">벤자민 버튼</button>
+    <button id="myBtn">김버튼</button>
+    <p id="console"></p> -->
+
+<!-- 오류가 왜 났는지를 찾으면서 코딩 실력이 는다. 
+새로고침했을 때 오류가 나면, 로딩시 실행되는 것에서 문제가 발생한 것 
+무엇을 잘못 입력했는지(오타)를 찾아야한다 -->
+
+<!-- querySelectorAll은 해당되는 모든 요소를 어레이 형태(배열)로 차곡차곡 쌓아서 갖다준다
+     querySelector는 해당되는 요소 중 맨 앞의 것 1개만 갖다준다(배열x, 하나의 참조값)
+    
+    -->
+
+</body>
+</html>

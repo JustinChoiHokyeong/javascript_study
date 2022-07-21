@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>javascript data type</h1>
+    <script>
+        let getData=function(){
+            // 어떤 과정을 거쳐서 얻어낸 object라고 가정
+            let obj={num:1, name:"김구라", addr:"노량진"};
+            // return 예약어를 이용해서 함수를 호출한 곳으로 object type 돌려주기
+            return obj;
+            // 호출하면 최종적으로 object 타입을 돌려주는 함수이기 때문에, .을 사용해서 참조할 수 있다.
+            // 호출할 때마다 새로운 오브젝트를 계속 리턴해준다, 
+            // let obj=getData(); 하면 getData가 갖고 있는 참조값을 obj에 대응시켰기 때문에
+            // obj 변수를 . 을 사용하는 오브젝트 특성을 이용할 수 있다.(해당 사물함 키를 받아서) 
+            // 하지만 let obj2=getData(); 를 했을 때, obj==obj2은 false다, 
+            // 호출할 때마다 새로운 오브젝트가 만들어지기 때문에, 사물함 키가 다르다.
+        };
+        let getFriends=function(){
+            // 어떤 과정을 거쳐서 얻어낸 array라고 가정
+            let friends=["김구라", "해골", "원숭이", "주뎅이", "덩어리"];
+            return friends;
+            // 호출하면 최종적으로 array 타입을 돌려주는 함수이기 때문에, 
+            // f=getFriends를 하면 변수가 참조값을 넘겨받았기 때문에, 
+            // f는 array타입처럼 인덱스[]와 인덱스을 사용해서 참조할 수 있다.
+        };
+
+        let a=getData;
+        let b=getData();
+        let c=getData().num;
+        let d=getData().name;
+        let e=getData().addr;
+
+        let f=getFriends;
+        let g=getFriends();
+        let h=getFriends()[0];
+
+        // 뭔가 데이터를 전달하는 함수
+
+
+    </script>
+</body>
+</html>
+
+<!-- document.querySelectorAll()[0].innerText
+        object   function array object | 이 뒤로는 아직 모름   
+    
+    console.log()
+    log는 호출할 수 있기 때문에
+    let console = {log : (function type data)}
+    콘솔.로그를 실행하면 이 안에 있는 함수가 실행된다.
+
+    document.querySelectorAll("h1")[0].innerText = "오잉?";
+    이렇게 하면 원하는 곳의 텍스트를 변경할 수도 있다.
+    자바스크립트는 결국 화면에서 어떤 동작을 하기 위해 배운다
+    -->

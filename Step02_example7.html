@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .kim{
+            width: 100px;
+            height: 100px;
+            background-color: yellow;
+            transition: all 0.5s ease-out;
+        }
+        .kim:hover{
+            cursor: pointer;
+            border: 1px solid red;
+        }
+    </style>
+</head>
+<body>
+    <img src="images/kim1.png" class="kim">
+    <script>
+        //상태값을 관리할 변수 선언, 관리할 이미지가 하나일 때
+        let isLarge=false;
+        document.querySelectorAll(".kim")[0].addEventListener("click",function(){
+            if(isLarge==false){
+                document.querySelectorAll(".kim")[0].style.width="150px";
+                document.querySelectorAll(".kim")[0].style.height="150px";
+                //확대된 상태이기 때문에 상태값을 바꿔준다.
+                isLarge=true;
+                return;
+                //함수를 종료시켜야 무한 반복하지 않음
+            }
+            else{
+                document.querySelectorAll(".kim")[0].style.width="100px";
+                document.querySelectorAll(".kim")[0].style.height="100px";
+                //축소된 상태이기 때문에 상태값을 바꿔준다.
+                isLarge=false;
+            }
+            /*
+                조건이 true면 if문 수행, false면 else문 수행.
+            */
+            
+        });
+    </script>
+</body>
+</html>

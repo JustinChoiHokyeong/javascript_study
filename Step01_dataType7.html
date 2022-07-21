@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>javascript data type</h1>
+    <script>
+
+        // f1();은 안됨, 왜냐하면 아직 안 만들어졌기 때문에 호출 불가
+        f2();
+                //f2는 로딩과 동시에 이미 만들어져 있기 때문에, 최우선으로 만들어졌기 때문에 호출 가능
+                // 이렇게 만들어지는 시점을 제외하곤 f1, f2는 똑같이 함수 만드는 방법이다.
+
+        // 이름 없는 함수를 만들고 그 함수의 참조값을 f1 이라는 변수에 대입하기
+        let f1=function(){
+        console.log("f1() 함수 호출됨");
+        };
+
+        f1(); 
+        // 위에서부터 내려오면서 함수가 만들어진 후에는 f1도 호출이 가능하다
+        // f2는 바로 함수를 선언하지만,
+        // f1은 함수를 만들고(오른쪽 먼저) 변수를 선언하고(후에 왼쪽) 다시 그 변수에 만든 함수를 대응시키기 때문에
+        // 더 작업이 많이 필요해서 그런듯
+
+        //f2라는 이름의 함수 만들기
+        // 웹페이지 로딩시, 자동으로 실행됨
+        function f2(){
+            console.log("f2() 함수 호출됨")
+        }
+
+        /*
+            'function(){}' 을 줄여서 '()=>{}'처럼 작성할 수 있다.
+            f3도 마찬가지로 변수를 따로 선언해서 사용했기 때문에, 함수 제작 이후에 사용가능하다 
+        */
+       let f3=()=>{
+            console.log("f3() 함수 호출됨");
+       };
+
+
+
+    </script>
+</body>
+</html>

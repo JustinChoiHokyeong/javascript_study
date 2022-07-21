@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    <button onclick="plus()">+</button>
+    <button onclick="minus()">-</button>
+    <input type="text" id="num2">
+    =
+    <span id="result"></span>
+    <script>
+        /*
+            페이지 로딩 시점에 함수에서 자주 사용하는 값을
+            미리 얻어내서 변수에 담아 놓는다.
+        */
+        let input1=document.querySelector("#num1");
+        let input2=document.querySelector("#num2");
+
+        /*
+        let a=input1.value;
+        let b=input2.value;
+        만약 이렇게 함수 밖에서 선언했다면, 페이지 로딩 시점에서 실행되기 때문에
+        a와 b 에는 빈 문자열이 들어가있다.(아직 아무것도 입력하지 않았기 때문에)
+        그리고 나서 비로소 사용자가 문자를 입력하기 때문에, 
+        인풋요소에 값이 들어가더라도, 변수에는 자동으로 값을 받을 수가 없다. 
+        만일 이대로 쓰고 싶으면 input 요소에 onchange="update()"를 추가한다
+
+        input1=document.querySelector("#num1").value까지 대응해서 사용할 수 없는 이유
+        10번 사물함에 값을 넣어놓고 필요할 때마다 참조한다, 
+        따라서 사물함 키만 갖고 있다면, 자동으로 변화하는 값을 참조할 수 있게된다.
+        오히려 사물함 안에 입력된 값까지 갖게되면, 변화하는 값을 자동으로 참조할 수 없게 된다.
+        즉, 사물함 안의 값이 바뀌어도 기존의 갖고있는 값은 바뀌지 않는다는 뜻
+        그래서 input1=document.querySelector("#num1")까지만 대응시키고 input1.value로 써야한다.
+        */
+
+        function plus(){
+            let a=input1.value;
+            let b=input2.value;
+        
+            let result=Number(a)+Number(b);
+            document.querySelector("#result").innerText=result
+ 
+
+        };
+        function minus(){
+            let a=document.querySelector("#num1").value;
+            let b=document.querySelector("#num2").value;
+            document.querySelector("#result").innerText=Number(a)-Number(b)
+            return a;
+            
+        };
+
+
+    </script>
+</body>
+</html>

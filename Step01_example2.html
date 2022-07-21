@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="one">
+    <input type="text" id="three">
+    <!-- 
+        document.querySelector("#one").value 하면 input에 입력한 값이 string으로 반환된다.
+    -->
+    <button onclick="send()">전송</button>
+    <button onclick="clearAll()">삭제</button>
+    <button onclick="practice()">연습</button>
+    <p id="two"></p>
+    
+    <script>
+        
+        // 함수 안에서만 필요한 변수는 let해서 지역 변수로 선언해야 한다
+        // msg 변수 선언이 바깥에 있으면 페이지 로딩 시점에서만 실행하고 사라지기 때문에,
+        // send 함수를 실행할 땐 msg 변수엔 빈 문자열만 있게 된다.
+        
+        
+        let send=function(){
+            let msg=document.querySelector("#one").value;
+            let msg2=document.querySelector("#three").value;
+            document.querySelector("#two").innerText=msg+msg2;
+        };
+
+        /*
+            삭제 버튼 눌렀을 때, input의 value와 p의 innerText가 제거되도록    
+            input은 입력값을 value로 받고,
+            p는 innerText로 받는다    
+        */
+        // let clearAll=function(){
+        //     document.querySelector("#one").value="";
+        //     document.querySelector("#two").innerText="";
+        //     document.querySelector("#three").value="";
+        // };
+
+        // function clearAll(){
+        //     let a=document.querySelector("#three").value;
+        //     document.querySelector("#two").innerText=a;
+        // };
+        
+        // 이런 방식으로도 가능함, 빈칸을 먼저 넣어놓고 센드해준 것
+        function clearAll() {
+            document.querySelector("#one").value="";
+            document.querySelector("#three").value="";
+            send();
+        };
+
+
+
+    </script>
+
+</body>
+</html>

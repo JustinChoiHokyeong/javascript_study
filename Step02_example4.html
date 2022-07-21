@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div>div1</div>
+    <div>div2</div>
+    <div>div3</div>
+    <div>div4</div>
+    <div>div5</div>
+    <div>div6</div>
+    <div>div7</div>
+    <div>div8</div>
+    <div>div9</div>
+    <div>div10</div>
+    <button id="changeBtn">바꾸기</button>
+    <button id="changeBtn3">바꾸기3</button>
+
+
+    <!--하나씩 작동하는 함수에서 index로 쓸 변수는 
+        글로벌(로딩시점)에서 선언해야 한다, 
+        그래야 이벤트가 발생할 때마다 0으로 초기화되는 것을 막을 수 있다. -->
+    <script>
+        let index=0;
+        document.querySelector("#changeBtn").addEventListener("click", function(){
+            
+            // if(index<10){
+            //     let divs=document.querySelectorAll("div");
+
+            //     divs[index].innerText="김구라";
+
+            //     index=index+1;
+            // };
+
+            // 일단 사용하고 인덱스를 증가시키면, 처음부터 바뀌게 할 수 있다.
+            // 코드의 위치와 순서도 영향을 미침
+            // 인덱스 10부터는 변경시킬게 없으므로, 오류를 피하려면 조건부로 줘야한다
+            // 인덱스가 10보다 작을 때만 작동하고, 그렇지 않으면(10이상이면) 건너뛴다
+            // if()은 소괄호 안이 true면 실행, false면 건너뜀(그냥 넘어감)
+
+            /*
+                function, 함수 : 
+                특정 시점에 일괄 실행할 javascript들을 모아 놓을 수 있다.
+                함수를 호출(call)하면 함수 안쪽으로 실행 순서가 들어간다
+                (위에서 아래로 한줄한줄씩 실행해나감)
+                함수는 언제 종료? 
+                함수 안에 있는 모든 javascript를 수행하고 더이상 수행할게 없을때
+                또한 수행하다가 return이라는 예약어를 만나도 종료가 된다. 끝까지 다 실행하지 않고 종료됨
+            */
+            //아래처럼 작성해도 가능하다
+            let divs=document.querySelectorAll("div");
+            if(index==divs.length){
+                //함수를 여기서 끝내라, length는 어레이 전체 갯수를 알려줌
+                // 어레이는 오브젝트에 포함되는 관계이기 때문에, 
+                // 어레이는 오브젝트의 속성(. 사용)도 갖고 있는 것이다.
+                return;
+            }
+            // querySelectorAll 함수를 써서 모든 div 요소들을 어레이 형태로 반환시켰다
+
+            divs[index].innerText="김구라";
+            index=index+1;  
+
+            
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>가위 바위 보 게임</h3>
+    <select id="mySelect">
+        <option value="9">나 : 선택</option>
+        <option value="0">나 : 가위</option>
+        <option value="1">나 : 바위</option>
+        <option value="2">나 : 보</option>
+    </select>
+    <strong>vs</strong>
+    <select id="comSelect">
+        <option value="0">com : 가위</option>
+        <option value="1">com : 바위</option>
+        <option value="2">com : 보</option>
+        <!-- 밸류값을 수정해서 선택되어지게 만들 수 있다 -->
+    </select>
+    <p id="result">선택하세요.</p>
+    
+    <script>
+        /*
+            Step02_example9.html을 참고해서 가위바위보 게임을 완성시켜 보세요
+            p요소에 "이겼다", "졌다", "비겼다" 출력
+        */
+        //페이지 로딩시 실행
+        let MS=document.querySelector("#mySelect");
+        let CS=document.querySelector("#comSelect");
+        
+
+        //아래는 이벤트가 발생해야 실행
+        MS.addEventListener("change",function(){
+            
+            let nums=Math.floor(Math.random()*3);
+            CS.value=nums;
+            
+
+            
+            if(MS.value==CS.value){
+                document.querySelector("#result").innerText="비겼다."}
+            else if((MS.value==0&&CS.value==2)||(MS.value==1&&CS.value==0)||(MS.value==2&&CS.value==1)){
+                document.querySelector("#result").innerText="이겼다."}   
+            else if((MS.value==0&&CS.value==1)||(MS.value==1&&CS.value==2)||(MS.value==2&&CS.value==0)){
+                document.querySelector("#result").innerText="졌다."}
+            else if(MS.value==9){document.querySelector("#result").innerText="선택하세요."}
+                
+            });
+            // (MS.value==9&&CS.value==0||CS.value==1||CS.value==2)
+
+
+        // 
+            
+
+            /*  (나, 컴)
+                비김 0,0 / 1,1 / 2,2
+                이김 0,2 / 1,0 / 2,1
+                  짐 0,1 / 1,2 / 2,0
+            */
+            
+        
+
+
+        // document.querySelector("#mySelect").addEventListener("change", function(){
+        //     let value=document.querySelector("#mySelect").value;
+        //     document.querySelector("#my").innerText=value;
+        // })
+        // document.querySelector("#myBtn2").addEventListener("click", function(){
+        //     let nums=Math.floor(Math.random()*3)
+        //     let data=["가위", "바위", "보"]
+        //     document.querySelector("#result2").innerText=data[nums]
+        // })
+
+          
+            
+            
+    </script>
+    
+</body>
+</html>

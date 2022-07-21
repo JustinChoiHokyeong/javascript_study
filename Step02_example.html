@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="plusBtn">증가</button>
+    <button id="minusBtn">감소</button>
+    <p id="console">0px</p>
+    <script>
+        // 페이지 로딩시점에서 오직 한번 실행(처음부터 끝까지),
+        // 전역변수가 만들어지고, 초기값 0이 된다
+        let count=0;
+        //이런 이벤트가 일어나면, 이런 함수를 호출시켜주세요 라는 뜻
+        // 다른 로컬영역에서 공유해서 사용한다
+        document.querySelector("#plusBtn").addEventListener("click",function(){
+            //이벤트가 발생할때마다 계속 실행
+            count = count + 1;
+            document.querySelector("#console").innerText=count+"px";
+            // 만약 함수 내에서 let count = count + 1 하게 되면, 
+            // 누를 때마다 새로 만들어져서 0으로 초기화가 된다
+        });
+
+        document.querySelector("#minusBtn").addEventListener("click",function(){
+            count = count - 1;
+            document.querySelector("#console").innerText=count+"px";
+        });
+        // 
+        
+    </script>
+</body>
+</html>

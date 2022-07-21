@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>javascript data type</h1>
+    <button onclick="remove()">삭제</button>
+    <button onclick="input()">입력 받기</button>
+    <button onclick="print()">입력 받은 내용 출력하기</button>
+    <script> // 페이지 로딩 즉시, 자바스크립트 내용은 위에서부터 순서대로 전부 실행된다
+
+        // confirm : 개발자가 사용자의 의견(true / false)을 물을 때 사용
+        // true를 눌렀을 때와 false를 눌렀을 때 각각의 반응을 준비한다
+        // let msg=prompt("입력...");
+        
+        function remove(){
+            // 삭제 여유를 입력받아서 지역변수 isDelete에 담는다.
+            let isDelete=confirm("삭제할까요?");
+            // 만일 삭제할거라면 (isDelete에 true가 들어있다면)
+            if(isDelete){
+                console.log("삭제합니다.");
+                //isDetete=true이면 삭제하는 작업하기, false가 들어있으면 그냥 건너뛴다
+            }
+        }   
+
+        // 어떤 함수에서 만든 지역 변수를 다른 함수에서 쓰고 싶다면
+        // 페이지 로딩 시점에 glabal 영역에 변수를 미리 만들어 놓는다.
+        let msg;
+
+        function input(){
+            msg=prompt("give me a message");
+        };
+
+        //console과 script 영역은 global 영역이다
+        //global 영역에서 함수 안의 isDelete라는 변수를 참조할 수 있나? 참조가 안된다
+        //지역 변수(local)는 지역 내부에서만 사용이 가능하다(<->전역변수)
+        // 검사-소스에서 실행 단계 확인하는 것을 디버깅이라고 함
+        // isDelete는 지역 변수이기 때문에 글로벌 영역인 콘솔에서는 확인이 안되었던 것(참조가 안된다)
+
+        function print(){
+            //글로벌 영역에 만들어진 변수에 있는 값을 참조해서 작업을 한다.
+            console.log(msg);
+            // 입력받기 누르기 전에는 undefined
+            // 입력받기 누르고 입력안하면 null
+            // 입력받은 후에는 입력값이 출력됨
+        };
+        
+        
+
+    </script>
+</body>
+</html>
+
+<!--
+    .git 이 있다면 언젠가 한번 이닛을 한 것임(깃으로 파일을 관리하기 위해)
+    한번 파일을 petch and merge를 했기 때문에
+    이땐 로컬 마스터와 오리진/마스터와 일치한다
+    다만, 추적되지 않은 파일이 있다(즉, 추가적인 수정은 하고 아직 커밋을 안한 상태임)
+
+    git commit : vi editor 들어가기, 커밋 메시지를 자세하게 길게 적고 싶을 때 사용
+    editor(키보드로 사용하는)
+    edit mode / command mode(처음 시작)
+    i(insert) / esc 눌러서 전환
+    커밋 설명 다 적고 저장하려면 커맨드 모드로 전환해서
+    :wq  하면 커밋이 된다.
+
+    오리진(원격저장소이름)/마스터(원격 저장소의 커밋을 트래킹하고 있는 마스터)
+    방금 커밋하고 나면 로컬 마스터가 오리진/마스터 보다 1커밋 앞서게 된다.
+    이때 로컬에서 이 새로운 커밋을 푸쉬하면 오리진/마스터가 1커밋 올라와서
+    둘이 일치하게 된다. 
+    만약 양쪽에서 수정을 해서 갈라지게 되면 그냥 푸쉬로는 안되고, 머지하고 푸쉬해야 한다
+
+    다른 사람이 새로 바뀐 리모트 저장소 내용을 받아오기 위해서는
+    git fetch origin master 하면 오리진/마스터가 로컬마스터를 1커밋 앞서나가게 된다
+    (새롭게 변경된 내용을 받은 것이니까, 나의 로컬 마스터는 아직 1커밋 뒤쳐져 있다)
+    그래서 git merge origin master하면 로컬 마스터가 1커밋 올라가서 둘이 일치하게 된다.
+    위 두 작업을 한번에 하는 것이 git pull origin master 이다
+    충돌나면 파일 충돌 해결하고 다시 커밋하면 된다. 충돌은 자연스러운 현상이다
+    실패하면 지우고 다시 받으면 된다. 부담가질 필요 없다
+  -->

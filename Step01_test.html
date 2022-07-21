@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" id="num1">
+    <button onclick="plus()">+</button>
+    <button onclick="minus()">-</button>
+    <input type="text" id="num2">
+    =
+    <span id="result"></span>
+    <script>
+        /*
+            페이지 로딩 시점에 함수에서 자주 사용하는 값을
+            미리 얻어내서 변수에 담아 놓는다.
+        */
+        let input1=document.querySelector("#num1");
+        // let input2=document.querySelector("#num2");
+        let input2=document.querySelector("#num2").value;
+        /*
+            
+
+        */
+
+        function plus(){
+            let a=input1.value;
+            // let b=input2.value;
+            let b=input2;
+            let result=Number(a)+Number(b);
+            document.querySelector("#result").innerText=result
+ 
+
+        };
+        function minus(){
+            let a=document.querySelector("#num1").value;
+            let b=document.querySelector("#num2").value;
+            document.querySelector("#result").innerText=Number(a)-Number(b)
+            return a;
+            
+        };
+
+
+    </script>
+</body>
+</html>

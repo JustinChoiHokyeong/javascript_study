@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        /* css의 selector와 함수의 선택자(selector)와 동일하다
+        "#num1" : id가 num1인 것 -> 함수
+        #num{ -> css
+
+        }
+            
+        */
+    
+    </style>
+</head>
+<body>
+    <input type="text" id="num1">
+    <button onclick="plus()">+</button>
+    <button onclick="minus()">-</button>
+    <input type="text" id="num2">
+    =
+    <span id="result"></span>
+    <script>
+        
+        // 스트링끼리 더하면 연결연산이 되어버린다. 이어붙여서 나열하는 것
+        // Number()에 숫자로 된 문자열을 입력하면, 넘버 타입으로 반환해준다
+
+        function plus(){
+            // 우선 입력된 값을 읽어온다.
+            let a=document.querySelector("#num1").value;
+            let b=document.querySelector("#num2").value;
+            // 연산의 결과 값을 얻어낸다.
+            let result=Number(a)+Number(b);
+            document.querySelector("#result").innerText=result
+            //
+
+            // if(a==""||b==""){
+            //     alert("값을 입력해주세요")
+            // }; 
+
+
+        };
+        function minus(){
+            let a=document.querySelector("#num1").value;
+            let b=document.querySelector("#num2").value;
+            document.querySelector("#result").innerText=Number(a)-Number(b)
+            return a;
+            
+        };
+
+        /*
+            자바스크립트의 '함수'는 웹 로딩 시 작성되기만 할 뿐, 실행되지는 않는다
+            " " 안의 자바스크립트는 특정 이벤트가 발생했을 때 실행된다. 
+
+            plus 안에는 function type data가 들었다. 그러면 함수니까 콜할 수 있겠네
+            plus() 로 콜하면, 참조값을 이용해서 
+            heap에 저장되어 있는 function을 찾은 후 일괄 실행시킨다 
+
+            let a = plus; plus함수 안의 function type data(에 대한 참조값)를 에이에 대입, 
+                    따라서 a를 plus처럼 사용가능하다
+
+            let b = plus(); 함수를 호출하고 나서 반환되는 값을 비에 대입, 
+                    반환값이 없으면 undefined가 반환될 수도 있다
+
+            참조와 호출을 반드시 구분해야 한다.
+
+            document : 빌트-인오브젝트(.을 사용가능하다)
+
+
+
+
+        */ 
+
+    </script>
+
+</body>
+</html>

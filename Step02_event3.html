@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 300px;
+            height: 300px;
+            border: 1px solid red;
+            margin-left: auto;
+            margin-right: auto;
+            margin-top: 200px;
+            /* div 안에서의 좌표는 offsetX: 200, offsetY: 24 이다  */
+        }
+    </style>
+</head>
+<body>
+
+    <div class="box" id="myDiv"></div>
+    <script>
+
+        document.querySelector("#myDiv").addEventListener("mousedown", function(){
+            document.querySelector("#myDiv").style.backgroundColor="yellow";
+        });
+
+        document.querySelector("#myDiv").addEventListener("mouseup", function(){
+            document.querySelector("#myDiv").style.backgroundColor="white";
+        });
+
+        // document.querySelector("#myDiv").addEventListener("mousemove", function(){
+        //     let mouseX = event.clientX;
+        //     let mouseY = event.clientY;
+        //     document.querySelector("#myDiv").innerText="x좌표: "+mouseX+", y좌표: "+mouseY;
+        // });
+
+        document.querySelector("#myDiv").addEventListener("mousemove", function(e){
+            // 이러면 마우스 움직일 때마다 계속해서 콜을 하는 것임
+            // console.log(e) 랑 console.log("mousemove!") 같은거 하면 계속 실행됨
+            // e라는 매개변수명만 선언해놓으면 정보를 부여받음, 
+            // 함수는 전달만 해놓으면 나중에 자동으로 호출됨, 
+            // 또한 일어난 이벤트에 대한 오브젝트(필요하면 받고 필요없으면 안받음)도 가지고 있다
+            // 근데 여기선 받고 싶으니까 e라는 매개변수 설정, e는 오브젝트에 대한 정보를 가지고 있다.
+            //(함수 addEventListener로 인해 그렇게 정보를 받기로 약속이 되어 있다)
+            // 함수의 매개변수만 입력하면 알아서 받아오고(전달?), 알아서 쓸수 있겠지(호출?) 하고 약속됨
+            // 출력할 정보 구성하기
+            let info="x좌표: "+e.offsetX+", y좌표:"+e.offsetY;
+            // 오브젝트 e를 이용해서 그 중에서 갖고 있는 offsetX, offsetY라는 키가 가진 정보를 불러옴
+            //div의 innerText로 출력하기
+            document.querySelector("#myDiv").innerText=info; 
+        });
+
+        // 2개의 매개변수가 선언된 함수
+        // 원하는 이벤트 이름과 콜백함수로 쓸 함수를 넣으면 됨
+        function callMe(eventName, a){
+            console.log("이벤트명:" + eventName);
+            // 콜백 함수를 호출하면서 전달할 object, 이건 그냥 정해진 변수임
+            let obj={num:1, name:"김구라"};
+            // (a)에 전달된 data type는 '함수이므로 호출'할 수 있다. 
+            // 매개변수이지만 호출할 수 있는 것
+            a(obj);
+            // a는 매개변수이며, 이 코드는 밑에 있는 callMe를 a로 보내서 함수를 호출하는 역할
+        };
+        // 함수가 내부적으로 어떻게 사용되는지 보려고 만든 것
+
+        callMe("안녕", function(a){
+            alert(a.name);
+            // a로 대응시킨 값에서 name에 해당하는 값을 찾아서 쓰고,
+        })
+            
+        
+        // eventName="배고파!"
+        // callback=function(){} 으로 대응된다고 생각하면 됨
+        // 콜백은 함수 타입이라서 콜할 수 있다.
+        // 
+
+
+    
+
+
+     
+
+        
+    </script>
+
+</body>
+</html>

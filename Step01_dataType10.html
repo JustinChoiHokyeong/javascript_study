@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h1>javascript data type</h1>
+    <script>
+
+        let myName;
+        // 변수 선언만 하고 어떤 값도 넣지 않으면 undefined된다
+
+        let str="안녕하세요";
+        // 변수를 선언해서 사용할 땐, 큰따옴표를 하지 않는다
+
+        /*
+         function(msg){}
+         에서 msg는 매개 변수이다.
+         함수에 전달되는 값을 전달 받을 변수이며
+         let을 선언하지 않는다.
+         매개 변수는 해당 함수 안에서만 사용할 수 있다.
+         함수를 호출하는 시점에 만들어지고 함수가 종료되면 사라진다.
+        */
+        let printMsg=function(msg){
+            // 매개변수, msg가 출력할 내용을 '소괄호 안에서' 받을 준비를 하는 것, 
+            // msg로 전달된다는 것을 가정하고 있다는 뜻
+            // 함수를 호출하는 순간, 입력값이 msg에 대입된다
+            // e.g msg=10, msg="hello", msg=str(변수) 라고 생각하라
+            
+            console.log("------------");
+            console.log(msg);
+            console.log("------------");
+
+            // 함수는 사실 어떤 heap(사물함) 영역에 만들어진다.
+            // 따라서 갖고 있는 value는 'heap 주소'이며, 참조값(reference)이다
+            // 필요할 때마다 heap에 저장된 데이터를 찾아서 꺼내서 쓰는 형식
+            // 함수를 변수에 지정하면, 그 변수에는 참조값(함수의 heap 주소)으로 대체된다
+            /* 
+                다중으로 참조할 수 있다. console에 실제로 오브젝트 전체를 가진게 아니라,
+                사물함 키를 가지고 있고, 그 키를 이용해서 사물함을 열었더니 또 다른 키가 있더라
+                그리고 그 사물함 안에 또 다른 사물함 키들이 들어있는 상황
+                console -> 참조, 사물함 키로 열어서 찾아가는 것
+                console.log -> 사물함 안에 있는 함수로 가는 사물함 키로 또 찾아가는 것
+                console.log() -> 콜(호출), 거기서 찾은 함수를 일괄 실행시키는 것
+
+            */ 
+
+            /*
+                stack        /     heap
+                num 1            20,22,23               
+                name kim
+                isRun true
+                obj 20(heap)
+                arr 22(heap)
+                f1 23(heap)
+            */
+            
+
+        };
+
+        // 함수 호출하면서 string type 데이터를 즉석에서 만들어서 전달하기
+        printMsg("hello");
+        // 함수 호출하면서 string type 데이터가 들어있는 변수명을 이용해서 값 전달하기
+        printMsg(str);
+
+        // 두 개의 매개변수를 갖는 함수
+        function printSum(num1, num2){
+            // 두 수의 합을 구해서
+            let result=num1+num2;
+            // 문자열 정보를 구성하고
+            let info=num1+" 과 "+num2+" 의 합은 "+result+" 입니다.";
+            // 여기서 쓴 +는 연결연산자(<-> 산술연산자)
+            // 구성된 문자열을 콘솔창에 출력하기
+            console.log(info);
+        }
+        // Not a Number = Undefined + Undefined
+
+        // "김구라"+1
+        // "김구라"+20
+        // "김구라"+"해골"
+        /* 연결 연산
+        */
+
+        // 함수 호출하면서 number type 데이터를 즉석으로 만들어서 전달하기
+        printSum(10,20);
+
+        let a=100;
+        let b=200;
+        // 함수 호출하면서 number type 데이터가 들어 있는 변수명으로 값 전달하기
+        printSum(a,b);
+
+
+    </script>
+</body>
+</html>
+
+<!-- 
+    - 깃허브에 공부하던 거 올리기
+
+    업로드하길 원하는 해당 폴더에서 깃 배쉬 열고
+    깃 이닛
+    깃 애드
+    깃 커밋 , git commit -m "설명"
+    깃허브로 가서 새로운 저장소 만들기(https://github.com/oli999/acorn202206_javascript)
+    git remote ~ 복사 붙여넣기(저장소 위치 알려주는 역할)
+    git remote -v (등록된거 확인하는 역할)
+    깃 푸쉬, git push -u origin master
+
+    - 깃허브에 올려진 거 집에서 다운받기
+
+    1) 압축파일 다운받기(단점 : 새로 추가(변경사항)로 올릴 때마다 새로 다운받아야 함)
+
+    * 2) 나의 computer 특정 폴더로 선생님의 저장소를 clone해서 사용한다.
+    변경 사항이 생기면 petch하고 머지하기만(두개 합친게 pull) 하면 됨
+    대신, 반대로 push는 안된다. 남의 저장소이기 때문에. 오직 페치, 풀 만 가능
+    teacher git hub - clone -> my local
+
+    3) 선생님의 github 저장소를 나의 github로 fork(복제본을 그대로 나의 깃허브로 가져오기)
+    나의 깃허브에 있는 fork된 저장소를 나의 computer 특정 폴더로 저장소를 clone해서 사용한다
+    teacher git hub(upstream) - fork -> My git hub(origin) - clone -> my local
+    새로 푸쉬된 내용은 자동으로 포크된 곳으로 오지 않는다, 그러므로
+    선생님의 깃허브에서 클론해서 나의 로컬에 받고, 그 다음에 내 깃허브에 머지로 올린다 
+
+    
+    전화번호는 스트링이다. 산술연산을 하지않는 숫자는 스트링
+    boolean 변수를 선언할 때 변수명을 대화식으로 짓는 것이 가독성이 좋다
+
+    순서가 중요하지 않은 데이터를 하나의 묶음으로 관리하고 싶어서 -> object, let obj={key:value, ... };
+    순서가 중요한 데이터를 하나의 묶음으로 관리 -> let arr=[0, 1, 2 ... ];
+    여러 개의 데이터를 관리할 때, 오브젝트와 어레이 중에 어떤 방식을 사용하는게 편할지 생각
+    한 가지 타입 -> 어레이 / 여러 타입이 섞여있음 -> 오브젝트
+    데이터는 인덱스를 붙여서 순서대로 관리하는 것이 효율적이다.
+    원하는 특정 시점에 일괄적으로 실행할 자바스크립트를 미리 모아둠 -> 함수, function, 
+    let f=function(){ javascripts };
+    function f2(){ javascripts };
+    let f3= ()=>{}; / function(){};의 줄임 표현이라 생각하면됨
+    호출하고 싶으면 -> f(), f2()
+
+    웹페이지 로딩시 자바스크립트 영역을 위에서부터 아래까지 한번 쭉 실행해본다
+    
+    
+
+
+ -->
